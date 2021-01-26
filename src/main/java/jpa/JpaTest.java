@@ -1,6 +1,5 @@
 package jpa;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -27,7 +26,7 @@ public class JpaTest {
 		try {
 			SectionDao dao = new SectionDao();
 			Section sec=new Section();
-			sec.setLibelle("En cours");
+			sec.setLibelle("to do");
 			dao.saveSection(sec);
 			
 			/*Tag tag=new Tag();

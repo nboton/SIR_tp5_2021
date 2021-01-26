@@ -56,6 +56,16 @@
 			<scope>provided</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-servlet </artifactId>
+			<version> 1.18.3 </version>
+		</dependency>
+		<dependency>
+			<groupId> com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>
+			<version> 1.18.3 </version>
+		</dependency>
 
 
 	</dependencies>
@@ -83,6 +93,15 @@
 				<version>2.4</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<path>/</path>
 				</configuration>
 			</plugin>
 		</plugins>

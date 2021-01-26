@@ -11,7 +11,7 @@ import kanban.Tag;
 public class SectionDao {
 	// Q1bis
 				public void saveSection(Section sec) {
-					//EntityTransaction t = EntityManagerHelper.getEntityManager().getTransaction();
+					EntityTransaction t = EntityManagerHelper.getEntityManager().getTransaction();
 
 					//t.begin();
 					EntityManagerHelper.getEntityManager().persist(sec);
