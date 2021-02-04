@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mysql.cj.Session;
 
-import dao.SectionDao;
-import jpa.EntityManagerHelper;
-import kanban.Section;
+import kanban.dao.SectionDao;
+import kanban.domain.Section;
+import kanban.jpa.EntityManagerHelper;
 
 @WebServlet(name = "section", urlPatterns = { "/MyServletSection" })
 public class MyServletSection extends HttpServlet{
