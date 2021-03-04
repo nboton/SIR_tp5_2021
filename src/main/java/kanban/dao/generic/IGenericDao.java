@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface IGenericDao<K, T extends Serializable> {
  
-   T findOne(final K id);
+   T findById(final K id);
  
    List<T> findAll();
   

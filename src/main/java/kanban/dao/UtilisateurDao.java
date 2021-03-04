@@ -4,10 +4,12 @@ import java.util.List;
 
 import javax.persistence.EntityTransaction;
 
+import kanban.dao.generic.AbstractJpaDao;
 import kanban.domain.Tag;
+import kanban.domain.Utilisateur;
 import kanban.jpa.EntityManagerHelper;
 
-public class UtilisateurDao {
+public class UtilisateurDao extends AbstractJpaDao<Long, Utilisateur> {
 	// Q1bis
 			public void saveTag(Tag tag) {
 				EntityTransaction t = EntityManagerHelper.getEntityManager().getTransaction();

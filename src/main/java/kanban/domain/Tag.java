@@ -2,67 +2,56 @@ package kanban.domain;
 
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Tag {
-	
-	private int id;
 
-	private String tag;
-	
-	private List<Carte>  cartes;
-	
-	
-	
-	
-	public Tag() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-
-	public Tag(int id, String tag) {
-		super();
-		this.id = id;
-		this.tag = tag;
-	}
+    private long id;
+    private String libTag;
+    private Fiche fiche;
 
 
-	public String getTag() {
-		return tag;
-	}
-
-	public void setTag(String tag) {
-		this.tag = tag;
-	}
-
-	@Id
-	@GeneratedValue
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	@ManyToMany()
-	public List<Carte> getCartes() {
-		return cartes;
-	}
+    public Tag() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 
-	public void setCartes(List<Carte> cartes) {
-		this.cartes = cartes;
-	}
+    public Tag(long id, String libTag, Fiche fiche) {
+        this.id = id;
+        this.libTag = libTag;
+        this.fiche = fiche;
+    }
 
-	
-	
-	
+    public String getLibTag() {
+        return libTag;
+    }
+
+    public Tag setLibTag(String libTag) {
+        this.libTag = libTag;
+        return this;
+    }
+
+    @Id
+    @GeneratedValue
+    public long getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @ManyToOne()
+    public Fiche getFiche() {
+        return fiche;
+    }
+
+    public Tag setFiche(Fiche fiche) {
+        this.fiche = fiche;
+        return this;
+    }
+
 
 }

@@ -8,7 +8,7 @@ import javax.persistence.EntityTransaction;
 
 public abstract class AbstractJpaDao<K, T extends Serializable> implements IGenericDao<K, T> {
 
-	private Class<T> clazz;
+	protected Class<T> clazz;
 
 	protected EntityManager entityManager;
 
@@ -20,7 +20,7 @@ public abstract class AbstractJpaDao<K, T extends Serializable> implements IGene
 		this.clazz = clazzToSet;
 	}
 
-	public T findOne(K id) {
+	public T findById(K id) {
 		return entityManager.find(clazz, id);
 	}
 
@@ -54,7 +54,7 @@ public abstract class AbstractJpaDao<K, T extends Serializable> implements IGene
 	}
 
 	public void deleteById(K entityId) {
-		T entity = findOne(entityId);
+		T entity = findById(entityId);
 		delete(entity);
 	}
 }

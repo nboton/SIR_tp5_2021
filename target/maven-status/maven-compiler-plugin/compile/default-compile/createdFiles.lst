@@ -1,16 +1,3 @@
-jpa\JpaTest.class
-kanban\Utilisateur.class
-dao\SectionDao.class
-dao\UtilisateurDao.class
 servlet\UserInfo.class
-kanban\Tag.class
-kanban\Hash1.class
-kanban\Carte.class
-kanban\Section.class
-fr\kanban\rest\SampleWebService.class
-dao\CarteDao.class
-jpa\EntityManagerHelper.class
-dao\TagDao.class
-kanban\Url.class
 servlet\MyServlet.class
 servlet\MyServletSection.class

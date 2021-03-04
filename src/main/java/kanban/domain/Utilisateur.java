@@ -1,19 +1,19 @@
 package kanban.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 @Entity
-public class Utilisateur {
+public class Utilisateur implements Serializable {
 
 	private String nom;
 	private String prenom;
 	private String email;
-	private List<Carte> cartes;
+	private List<Fiche> fiches;
 	
 	
 	public Utilisateur() {
@@ -21,12 +21,12 @@ public class Utilisateur {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Utilisateur(String nom, String prenom, String email, List<Carte> cartes) {
+	public Utilisateur(String nom, String prenom, String email, List<Fiche> fiches) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
-		this.cartes = cartes;
+		this.fiches = fiches;
 	}
 
 	public String getNom() {
@@ -51,11 +51,11 @@ public class Utilisateur {
 	}
 	
 	@OneToMany(mappedBy = "utilisateur", cascade = CascadeType.PERSIST)
-	public List<Carte> getCartes() {
-		return cartes;
+	public List<Fiche> getFiches() {
+		return fiches;
 	}
-	public void setCartes(List<Carte> cartes) {
-		this.cartes = cartes;
+	public void setFiches(List<Fiche> fiches) {
+		this.fiches = fiches;
 	}
 	@Override
 	public String toString() {

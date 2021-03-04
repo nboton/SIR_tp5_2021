@@ -23,7 +23,6 @@ public class MyServletSection extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//response.setContentType("text/html");
 		String libelle=request.getParameter("libelle");	
 		EntityManager manager = EntityManagerHelper.getEntityManager();
 		EntityTransaction tx = manager.getTransaction();
@@ -34,9 +33,9 @@ public class MyServletSection extends HttpServlet{
 			System.out.print("ooooooooooooo");
 			SectionDao dao = new SectionDao();
 			Section section=new Section();
-			section.setLibelle(libelle);
+			section.setLibsect(libelle);
 		
-			dao.saveSection(section);
+			//dao.saveSection(section);
 								
 			 
 		

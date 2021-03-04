@@ -1,5 +1,6 @@
 package kanban.domain;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,11 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Section {
+public class Section implements Serializable {
 	
-	private int id;
-	private String libelle;
-	private List<Carte> cartes;
+	private long id;
+	private String libsect;
+	private List<Fiche> fiches;
+	private List<ColonneTableau> colonneTableaux;
 	
 	
 
@@ -21,39 +23,52 @@ public class Section {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-
-	public Section(String libelle) {
-		super();
-		
-		this.libelle = libelle;
-			}
 
 
-	public String getLibelle() {
-		return libelle;
-	}
-
-	public void setLibelle(String libelle) {
-		this.libelle = libelle;
+	public Section(long id, String libsect, List<Fiche> fiches, List<ColonneTableau> colonneTableaux) {
+		this.id = id;
+		this.libsect = libsect;
+		this.fiches = fiches;
+		this.colonneTableaux = colonneTableaux;
 	}
 
 	@Id
 	@GeneratedValue
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
-	@OneToMany(mappedBy = "section", cascade = CascadeType.PERSIST)
-	public List<Carte> getCartes() {
-		return cartes;
+	public String getLibsect() {
+		return libsect;
 	}
 
-	public void setCartes(List<Carte> cartes) {
-		this.cartes = cartes;
+	public void setLibsect(String libelle) {
+		this.libsect = libelle;
+	}
+
+
+	@OneToMany(mappedBy = "section", cascade = CascadeType.PERSIST)
+	public List<Fiche> getFiches() {
+		return fiches;
+	}
+
+	public void setFiches(List<Fiche> fiches) {
+		this.fiches = fiches;
+	}
+
+
+	@OneToMany(mappedBy = "section", cascade = CascadeType.PERSIST)
+
+	public List<ColonneTableau> getColonneTableaux() {
+		return colonneTableaux;
+	}
+
+	public Section setColonneTableaux(List<ColonneTableau> colonneTableaux) {
+		this.colonneTableaux = colonneTableaux;
+		return this;
 	}
 }
