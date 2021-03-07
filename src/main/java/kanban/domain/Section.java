@@ -1,74 +1,60 @@
 package kanban.domain;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
 @Entity
 public class Section implements Serializable {
-	
-	private long id;
-	private String libsect;
-	private List<Fiche> fiches;
-	private List<ColonneTableau> colonneTableaux;
-	
-	
+    @Id
+    @GeneratedValue
+    private long id;
+    private String libelle;
+    @ManyToMany
+    private List<Tableau> tableaux;
+    @OneToMany(mappedBy = "section", cascade = CascadeType.PERSIST)
+    private List<PositionnementFiche> positionnementFiches;
 
-	public Section() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    public Section() {
+        super();
+    }
 
+    public Section(String libelle) {
+        this.id = id;
+        this.libelle = libelle;
+        this.tableaux = tableaux;
+        this.positionnementFiches = positionnementFiches;
+    }
 
-	public Section(long id, String libsect, List<Fiche> fiches, List<ColonneTableau> colonneTableaux) {
-		this.id = id;
-		this.libsect = libsect;
-		this.fiches = fiches;
-		this.colonneTableaux = colonneTableaux;
-	}
+    public long getId() {
+        return id;
+    }
 
-	@Id
-	@GeneratedValue
-	public long getId() {
-		return id;
-	}
-	
-	public void setId(long id) {
-		this.id = id;
-	}
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	public String getLibsect() {
-		return libsect;
-	}
+    public String getLibelle() {
+        return libelle;
+    }
 
-	public void setLibsect(String libelle) {
-		this.libsect = libelle;
-	}
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
+    }
 
+    public List<Tableau> getTableaux() {
+        return tableaux;
+    }
 
-	@OneToMany(mappedBy = "section", cascade = CascadeType.PERSIST)
-	public List<Fiche> getFiches() {
-		return fiches;
-	}
+    public void setTableaux(List<Tableau> tableaux) {
+        this.tableaux = tableaux;
+    }
 
-	public void setFiches(List<Fiche> fiches) {
-		this.fiches = fiches;
-	}
+    public List<PositionnementFiche> getPositionnementFiches() {
+        return positionnementFiches;
+    }
 
-
-	@OneToMany(mappedBy = "section", cascade = CascadeType.PERSIST)
-
-	public List<ColonneTableau> getColonneTableaux() {
-		return colonneTableaux;
-	}
-
-	public Section setColonneTableaux(List<ColonneTableau> colonneTableaux) {
-		this.colonneTableaux = colonneTableaux;
-		return this;
-	}
+    public void setPositionnementFiches(List<PositionnementFiche> positionnementFiches) {
+        this.positionnementFiches = positionnementFiches;
+    }
 }

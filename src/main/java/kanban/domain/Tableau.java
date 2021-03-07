@@ -1,51 +1,55 @@
 package kanban.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Tableau {
-    private  long idTableau;
-    private String libTableau;
-    private List<ColonneTableau> colonneTableaux;
+public class Tableau implements Serializable {
+    @Id
+    @GeneratedValue
+    private long id;
+    private String libelle;
+    @ManyToMany(mappedBy = "tableaux")
+    private List<Section> sections;
+
+    @OneToMany(mappedBy = "tableau", cascade = CascadeType.PERSIST)
+    private List<Fiche> fiches;
+
 
     public Tableau() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-    public Tableau(int idTableau, String libTableau, List<ColonneTableau> colonneTableaux) {
-        this.idTableau = idTableau;
-        this.libTableau = libTableau;
-        this.colonneTableaux = colonneTableaux;
+    public long getId() {
+        return id;
     }
 
-    @Id
-    @GeneratedValue
-    public long getIdTableau() {
-        return idTableau;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public Tableau setIdTableau(int idTableau) {
-        this.idTableau = idTableau;
-        return this;
+    public String getLibelle() {
+        return libelle;
     }
 
-    public String getLibTableau() {
-        return libTableau;
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 
-    public Tableau setLibTableau(String libTableau) {
-        this.libTableau = libTableau;
-        return this;
-    }
-   @OneToMany(mappedBy = "tableau", cascade = CascadeType.PERSIST)
-    public List<ColonneTableau> getColonneTableaux() {
-        return colonneTableaux;
+    public List<Section> getSections() {
+        return sections;
     }
 
-    public Tableau setColonneTableaux(List<ColonneTableau> colonneTableaux) {
-        this.colonneTableaux = colonneTableaux;
-        return this;
+    public void setSections(List<Section> sections) {
+        this.sections = sections;
+    }
+
+    public List<Fiche> getFiches() {
+        return fiches;
+    }
+
+    public void setFiches(List<Fiche> fiches) {
+        this.fiches = fiches;
     }
 }

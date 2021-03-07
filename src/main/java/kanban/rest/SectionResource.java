@@ -1,9 +1,6 @@
 package kanban.rest;
-
-
 import io.swagger.v3.oas.annotations.Parameter;
 import kanban.dao.SectionDao;
-import kanban.domain.Pet;
 import kanban.domain.Section;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -16,10 +13,9 @@ public class SectionResource {
 
     @SuppressWarnings("unchecked")
     @GET
-    @Path("/")
+    @Path("section/")
     @Produces(MediaType.APPLICATION_JSON)
     public List<Section> getAllSection()  {
-        // return pet
         return new  SectionDao().findAll();
     }
 

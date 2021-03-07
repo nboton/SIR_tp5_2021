@@ -1,33 +1,20 @@
 package kanban.dao;
 
-import java.util.List;
-
-import javax.persistence.EntityTransaction;
-
 import kanban.dao.generic.AbstractJpaDao;
-import kanban.domain.Tag;
+import kanban.domain.Section;
 import kanban.domain.Utilisateur;
-import kanban.jpa.EntityManagerHelper;
+import kanban.domain.Utilisateur;
 
 public class UtilisateurDao extends AbstractJpaDao<Long, Utilisateur> {
-	// Q1bis
-			public void saveTag(Tag tag) {
-				EntityTransaction t = EntityManagerHelper.getEntityManager().getTransaction();
 
-				t.begin();
-				EntityManagerHelper.getEntityManager().persist(tag);
-				t.commit();
-			}
+	public UtilisateurDao() {
+		super();
+		this.clazz = Utilisateur.class;
+	}
 
-			// Q1
-			public List<Tag> getAllTag() {
-				String query = "select t from Tag as t";
-				return EntityManagerHelper.getEntityManager().createQuery(query, Tag.class).getResultList();
-			}
 
-			// Q1NamedQuery
-			public List<Tag> getAllTagter() {
-				return EntityManagerHelper.getEntityManager().createNamedQuery("Tous les tags", Tag.class)
-						.getResultList();
-			}
+	public Utilisateur findById(String id) {
+		return entityManager.find(clazz, id);
+	}
+
 }

@@ -1,57 +1,48 @@
 package kanban.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.*;
-
 @Entity
-public class Tag {
-
+public class Tag  implements Serializable {
+    @Id
+    @GeneratedValue
     private long id;
-    private String libTag;
-    private Fiche fiche;
+    private String libelle;
+    @ManyToMany
+    List<Fiche> fiches;
 
 
     public Tag() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-
-    public Tag(long id, String libTag, Fiche fiche) {
-        this.id = id;
-        this.libTag = libTag;
-        this.fiche = fiche;
-    }
-
-    public String getLibTag() {
-        return libTag;
-    }
-
-    public Tag setLibTag(String libTag) {
-        this.libTag = libTag;
-        return this;
-    }
-
-    @Id
-    @GeneratedValue
     public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
+
     }
 
-    @ManyToOne()
-    public Fiche getFiche() {
-        return fiche;
+    public String getLibelle() {
+        return libelle;
     }
 
-    public Tag setFiche(Fiche fiche) {
-        this.fiche = fiche;
-        return this;
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 
+    public List<Fiche> getFiches() {
+        return fiches;
+    }
 
+    public void  setFiches(List<Fiche> fiches) {
+        this.fiches = fiches;
+    }
 }

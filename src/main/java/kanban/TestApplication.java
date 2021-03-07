@@ -21,9 +21,9 @@ import java.util.Set;
 
 import javax.ws.rs.core.Application;
 
-import kanban.rest.PetResource;
+//import kanban.domain.Utilisateur;
+import kanban.rest.*;
 import io.swagger.v3.jaxrs2.integration.resources.OpenApiResource;
-import kanban.rest.SectionResource;
 
 public class TestApplication extends Application {
 
@@ -35,6 +35,11 @@ public class TestApplication extends Application {
 
         clazzes.add(PetResource.class);
         clazzes.add(SectionResource.class);
+        clazzes.add(UtilisateurResource.class);
+        clazzes.add(TableauResource.class);
+        clazzes.add(FicheResource.class);
+        clazzes.add(PositionnementFicheResource.class);
+        clazzes.add(TagResource.class);
         clazzes.add(OpenApiResource.class);
         
 
