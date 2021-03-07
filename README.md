@@ -1,5 +1,5 @@
 # TP SIR JPA 2020-2021 
-####- Requêtes GET :
+- Requêtes GET :
 
 Le lien suivant permet de récupérer l’ensemble des tableaux disponible : http://localhost/api/tableau/
 
@@ -28,7 +28,7 @@ Le lien suivant permet de récupérer l’ensemble des utilisateur disponibles 
 http://localhost:8080/api/utilisateur/
 
 ----------------------------------------------
-####- Requêtes  POST :
+- Requêtes  POST :
 
 Le lien suivant permet d’ajouter un tableau :
 http://localhost/api/tableau/add
@@ -44,7 +44,7 @@ http://localhost/api/section/add
 
 ----------------------------------------------
 
-####- Requêtes DELET :
+- Requêtes DELET :
 
 
 Le lien suivant permet de supprimer un tableau par son identifiant :
