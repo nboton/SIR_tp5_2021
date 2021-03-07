@@ -59,6 +59,7 @@ http://localhost/api/section/delete/{{sectId}}
 
 Le lien suivant permet de supprimer une section par son iden
 http://localhost/api/utilisateur/delete/{{userId}}
+
 ----------------------------------------------
 
 ###Authors:
