@@ -62,6 +62,6 @@ http://localhost/api/utilisateur/delete/{{userId}}
 
 ----------------------------------------------
 
-###Authors:
+# Authors:
 - Olive BOTON
 - Anwar MACHADI
