@@ -86,7 +86,7 @@ Dans POSTMAN, vous pouvez utiliser les url définies ci-dessous pour afficher, e
    http://localhost/api/section/delete/{{sectId}}
 
 
-
+lien vers TP JPA: https://github.com/nboton/SIR_tp_jpa2021
 ----------------------------------------------
 
 # Authors:
