@@ -9,4 +9,5 @@ public class PositionnementFicheDao extends AbstractJpaDao<Long, PositionnementF
         super();
         this.clazz=PositionnementFiche.class;
     }
+
 }

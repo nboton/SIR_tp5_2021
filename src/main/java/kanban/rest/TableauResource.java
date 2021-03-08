@@ -22,7 +22,7 @@ public class TableauResource {
 
     @GET
     @Path("/tableau/{idTab}")
-    public Tableau getFicheById(@PathParam("idtab") Long idTab)  {
+    public Tableau getTableauById(@PathParam("idTab") Long idTab)  {
 
         return new TableauDao().findById(idTab);
     }
@@ -38,8 +38,8 @@ public class TableauResource {
     @DELETE
     @Path("/tableau/delete/{idTab}")
 
-    public void  deletetableau(@PathParam("idTab") Long idfich) {
-        new TableauDao().deleteById(idfich);
+    public void  deletetableau(@PathParam("idTab") Long idTab) {
+        new TableauDao().deleteById(idTab);
 
     }
 }

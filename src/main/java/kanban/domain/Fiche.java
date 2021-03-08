@@ -4,14 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Entity
+@Entity @Table(name = "T_Fiche")
 public class Fiche implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private long idFiche;
 
     @Temporal(TemporalType.DATE)
     private Date dateButoire;
@@ -21,29 +22,34 @@ public class Fiche implements Serializable {
     private String noteExplicative;
     private int delai;
 
-    @ManyToMany(mappedBy = "fiches")
-    private List<Tag> tags;
+    @ManyToMany
+    @JoinTable( name = "T_Fiche_Tag",
+            joinColumns = @JoinColumn( name = "idFiche" ),
+            inverseJoinColumns = @JoinColumn( name = "idTag" ) )
+    private List<Tag> tags=new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn( name="codeUser" )
     @JsonIgnoreProperties("fiches")
     private Utilisateur utilisateur;
 
-    @OneToMany(mappedBy = "fiche", cascade = CascadeType.PERSIST)
-    private List<PositionnementFiche> positionnementFiches;
+    @OneToMany(mappedBy = "fiche", cascade = CascadeType.MERGE)
+    private List<PositionnementFiche> positionnementFiches=new ArrayList<>();
 
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.PERSIST)
+    @JoinColumn( name="idTableau" )
     private Tableau tableau;
 
     public Fiche() {
         super();
     }
 
-    public long getId() {
-        return id;
+    public long getIdFiche() {
+        return idFiche;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIdFiche(long id) {
+        this.idFiche = id;
     }
 
     public Date getDateButoire() {

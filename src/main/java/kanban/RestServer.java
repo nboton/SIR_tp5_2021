@@ -1,12 +1,11 @@
 package kanban;
 
 import io.undertow.Undertow;
-import kanban.dao.FicheDao;
-import kanban.dao.UtilisateurDao;
-import kanban.domain.Fiche;
-import kanban.domain.Utilisateur;
+import kanban.dao.*;
+import kanban.domain.*;
 import org.jboss.resteasy.plugins.server.undertow.UndertowJaxrsServer;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -20,7 +19,7 @@ public class RestServer {
 
     private static final Logger logger = Logger.getLogger(RestServer.class.getName());
 
-    public static void main( String[] args ) {
+    public static void main( String[] args ) throws ParseException {
 
         UndertowJaxrsServer ut = new UndertowJaxrsServer();
 
@@ -39,11 +38,16 @@ public class RestServer {
       //test
         UtilisateurDao utilisateurDao=new UtilisateurDao();
         FicheDao ficheDao=new FicheDao();
+        TableauDao tableauDao=new TableauDao();
+        SectionDao sectionDao=new SectionDao();
+        TagDao tagDao=new TagDao();
 
-        //Enregistrement utilisateurs
+
+
+        //+++++++++++++++++Enregistrement  de trois utilisateurs+++++++++++++++++++++++++++++++++++++
         //user1
         Utilisateur u1 = new Utilisateur();
-        u1.setCode("u1");
+        u1.setCodeUser("u1");
         u1.setNom("BOTON");
         u1.setPrenom("Olive");
         u1.setEmail("boton@gmail.com");
@@ -51,24 +55,24 @@ public class RestServer {
 
         //user2
         Utilisateur u2 = new Utilisateur();
-        u2.setCode("u2");
+        u2.setCodeUser("u2");
         u2.setNom("MACHADI");
         u2.setPrenom("Anwar");
         u2.setEmail("machadi@gmail.com");
 
         //user3
         Utilisateur u3 = new Utilisateur();
-        u3.setCode("u3");
+        u3.setCodeUser("u3");
         u3.setNom("Dupont");
         u3.setPrenom("Auguste ");
         u3.setEmail("august@gmail.com");
 
 
-        //Enregistrement fiche
+        //+++++++++++++++++Enregistrement fiche+++++++++++++++++++++++++++++++++++++++++++++++++
         SimpleDateFormat formatDat=new SimpleDateFormat("dd-MM-yyyy", Locale.FRENCH);
         //Fiche 1
         Fiche f1 = new Fiche();
-        f1.setDateButoire(new Date());
+        f1.setDateButoire(formatDat.parse("10-02-2021"));
         f1.setDelai(20);
         f1.setLibelle("Fiche 1");
         f1.setLieu("Ville jean");
@@ -78,7 +82,7 @@ public class RestServer {
 
         //Fiche 2
         Fiche f2 = new Fiche();
-        f2.setDateButoire(new Date());
+        f2.setDateButoire(formatDat.parse("07-02-2021"));
         f2.setDelai(45);
         f2.setLibelle("Fiche 2");
         f2.setLieu("Rennes beaulieu");
@@ -88,7 +92,7 @@ public class RestServer {
 
         //Fiche 3
         Fiche f3 = new Fiche();
-        f3.setDateButoire(new Date());
+        f3.setDateButoire(formatDat.parse("11-02-2021"));
         f3.setDelai(35);
         f3.setLibelle("Fiche 3");
         f3.setLieu("Clémenceau");
@@ -98,7 +102,7 @@ public class RestServer {
 
         //Fiche 4
         Fiche f4 = new Fiche();
-        f4.setDateButoire(new Date());
+        f4.setDateButoire(formatDat.parse("11-02-2021"));
         f4.setDelai(60);
         f4.setLibelle("Fiche 4");
         f4.setLieu("Clémenceau");
@@ -108,7 +112,7 @@ public class RestServer {
 
         //Fiche 5
         Fiche f5 = new Fiche();
-        f5.setDateButoire(new Date());
+        f5.setDateButoire(formatDat.parse("08-02-2021"));
         f5.setDelai(45);
         f5.setLibelle("Fiche 5");
         f5.setLieu("Rennes Charles de gaule");
@@ -118,7 +122,7 @@ public class RestServer {
 
         //Fiche 6
         Fiche f6 = new Fiche();
-        f6.setDateButoire(new Date());
+        f6.setDateButoire(formatDat.parse("09-02-2021"));
         f6.setDelai(30);
         f6.setLibelle("Fiche 6");
         f6.setLieu("Saint Jacques");
@@ -135,6 +139,35 @@ public class RestServer {
         ficheDao.save(f4);
         ficheDao.save(f5);
         ficheDao.save(f6);
+
+        //+++++++++++++++++++++Crétion de tableau++++++++++++++++++++++++++++++
+        Tableau tableau1=new Tableau("Tableau 1");
+        Tableau tableau2=new Tableau("Tableau 2");
+        tableauDao.save(tableau1);
+        tableauDao.save(tableau2);
+
+
+        //+++++++++++++++++++Crétion de section++++++++++++++++++++++++++
+        Section section1=new Section("en attente");
+        Section section2=new Section("en cours");
+        Section section3=new Section("realisé 3");
+
+
+        sectionDao.save(section1);
+        sectionDao.save(section2);
+        sectionDao.save(section3);
+
+        //+++++++++++++++++++Crétion de tag ++++++++++++++++++++++++++
+        Tag tag1=new Tag("tag1");
+        Tag tag2=new Tag("tag2");
+        Tag tag3=new Tag("tag3");
+        tagDao.save(tag1);
+        tagDao.save(tag2);
+        tagDao.save(tag3);
+
+
+
+
 
     }
 }

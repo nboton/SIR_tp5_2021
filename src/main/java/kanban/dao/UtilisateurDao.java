@@ -17,4 +17,13 @@ public class UtilisateurDao extends AbstractJpaDao<Long, Utilisateur> {
 		return entityManager.find(clazz, id);
 	}
 
+	public void save(Utilisateur u) {
+		if(super.findAll().size()!=0){
+			super.update(u);
+		}else {
+			super.save(u);
+		}
+
+	}
+
 }

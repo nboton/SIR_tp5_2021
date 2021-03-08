@@ -4,18 +4,20 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
-@Entity
+@Entity @Table(name = "T_PositionnementFiche")
 public class PositionnementFiche implements Serializable {
     @Id
     @GeneratedValue
-    private long id;
+    private long idPositionnementFiche;
 
     @Temporal(TemporalType.DATE)
     private Date dateDebut;
 
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.PERSIST)
+    @JoinColumn( name="idFiche" )
     private Fiche fiche;
-    @ManyToOne
+    @ManyToOne (cascade = CascadeType.PERSIST)
+    @JoinColumn( name="idSection" )
     private Section section;
 
     public PositionnementFiche() {
@@ -23,11 +25,11 @@ public class PositionnementFiche implements Serializable {
     }
 
     public long getId() {
-        return id;
+        return idPositionnementFiche;
     }
 
     public PositionnementFiche setId(long id) {
-        this.id = id;
+        this.idPositionnementFiche = id;
         return this;
     }
 
