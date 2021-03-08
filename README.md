@@ -6,7 +6,6 @@ Avant de démarrer le projet,
  
  -Les paramètres par défaut sont déjà définis au niveau du fichier persistence.xml
  comme suit:
- 
    <persistence-unit name="dev" transaction-type="RESOURCE_LOCAL">
         <!-- <class>org.hibernate.ejb.test.Cat</class> -->
         <!--  <class>org.hibernate.ejb.test.Distributor</class> -->
