@@ -1,10 +1,13 @@
 # TP SIR JPA 2020-2021 
 
 Avant de démarrer le projet,
- -créer une base de données vide nommé: db_kanban
+
+ -créer une base de données vide nommée: db_kanban
+ 
  -Les paramètres par défaut sont déjà définis au niveau du fichier persistence.xml
- comme suit.
-  <persistence-unit name="dev" transaction-type="RESOURCE_LOCAL">
+ comme suit:
+ 
+   <persistence-unit name="dev" transaction-type="RESOURCE_LOCAL">
         <!-- <class>org.hibernate.ejb.test.Cat</class> -->
         <!--  <class>org.hibernate.ejb.test.Distributor</class> -->
         <!--  <class>org.hibernate.ejb.test.Item</class> -->
@@ -22,10 +25,10 @@ Avant de démarrer le projet,
     
 Pour démarrer le projet,
  -Lancer la classe "RestServer".Cette classe contient la méthode main et permet de démarrer le serveur.
- -Elle contient un ensemble d'instance qui permette  permettent de peupler automatiquement  la base de données une fois que cette classe est lancée.
+ -Elle contient un ensemble d'instance qui  permettent de peupler automatiquement  la base de données une fois lancée.
  -Vous pouvez ensuite consulter votre base de données pour voir les enregistrement
  
-Dans POSTMAN, vous pouvez utiliser les url définies ci-dessous pour afficher enregistrer et supprimer des données dans la base.
+Dans POSTMAN, vous pouvez utiliser les url définies ci-dessous pour afficher, enregistrer, et supprimer des données dans la base.
 
 - Requêtes GET :
    Le lien suivant permet d'afficher l’ensemble des utilisateur disponibles :
