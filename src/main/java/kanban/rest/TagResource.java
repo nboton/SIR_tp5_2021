@@ -1,8 +1,10 @@
 package kanban.rest;
 
 import io.swagger.v3.oas.annotations.Parameter;
+import kanban.dao.FicheDao;
 import kanban.dao.TableauDao;
 import kanban.dao.TagDao;
+import kanban.domain.Fiche;
 import kanban.domain.Tableau;
 import kanban.domain.Tag;
 
@@ -33,7 +35,7 @@ public class TagResource {
     @Path("/tag/add")
     @Consumes("application/json")
     public Response addTag(
-            @Parameter(description = "Pet object that needs to be added to the store", required = true) Tag tag) {
+            @Parameter(description = "", required = true) Tag tag) {
         new TagDao().save(tag);
         return Response.ok().entity("SUCCESS").build();
     }
@@ -44,5 +46,14 @@ public class TagResource {
     public void  deleteTag(@PathParam("idTag") Long idTag) {
         new TagDao().deleteById(idTag);
 
+    }
+
+    @POST
+    @Path("/tag/update")
+    @Consumes("application/json")
+    public Response updateTag(
+            @Parameter(description = "", required = true) Tag tag) {
+        new TagDao().update(tag);
+        return Response.ok().entity("SUCCESS").build();
     }
 }

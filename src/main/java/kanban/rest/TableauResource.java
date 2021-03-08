@@ -1,7 +1,10 @@
 package kanban.rest;
 import io.swagger.v3.oas.annotations.Parameter;
 import kanban.dao.TableauDao;
+import kanban.dao.TagDao;
 import kanban.domain.Tableau;
+import kanban.domain.Tag;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -30,7 +33,7 @@ public class TableauResource {
     @Path("/tableau/add")
     @Consumes("application/json")
     public Response addTableau(
-            @Parameter(description = "Pet object that needs to be added to the store", required = true) Tableau tableau) {
+            @Parameter(description = "", required = true) Tableau tableau) {
         new TableauDao().save(tableau);
         return Response.ok().entity("SUCCESS").build();
     }
@@ -41,5 +44,13 @@ public class TableauResource {
     public void  deletetableau(@PathParam("idTab") Long idTab) {
         new TableauDao().deleteById(idTab);
 
+    }
+    @POST
+    @Path("/tableau/update")
+    @Consumes("application/json")
+    public Response updateTableau(
+            @Parameter(description = "", required = true) Tableau tableau) {
+        new TableauDao().update(tableau);
+        return Response.ok().entity("SUCCESS").build();
     }
 }

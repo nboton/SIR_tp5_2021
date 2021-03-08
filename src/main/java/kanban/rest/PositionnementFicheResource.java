@@ -42,7 +42,7 @@ public class PositionnementFicheResource {
     @DELETE
     @Path("/PositionnementFiche/delete/{idPfich}")
 
-    public void deleteFiche(@PathParam("idPfich") Long idPfich) {
+    public void deletePositionnementFiche(@PathParam("idPfich") Long idPfich) {
         new PositionnementFicheDao().deleteById(idPfich);
 
     }

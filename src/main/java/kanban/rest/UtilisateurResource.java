@@ -31,7 +31,7 @@ public class UtilisateurResource {
     @Path("/utilisateur/add")
     @Consumes("application/json")
     public Response addUtilisateur(
-            @Parameter(description = "Pet object that needs to be added to the store", required = true) Utilisateur user) {
+            @Parameter(description = "", required = true) Utilisateur user) {
         new UtilisateurDao().save(user);
         return Response.ok().entity("SUCCESS").build();
     }
@@ -39,7 +39,7 @@ public class UtilisateurResource {
     @DELETE
     @Path("/utilisateur/delete/{userId}")
 
-    public void  deleteUtilisateur(@PathParam("userId") Long userId) {
+    public void  deleteUtilisateur(@PathParam("userId")  String userId) {
         new UtilisateurDao().deleteById(userId);
 
     }

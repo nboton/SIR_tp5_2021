@@ -5,6 +5,8 @@ import kanban.domain.Section;
 import kanban.domain.Utilisateur;
 import kanban.domain.Utilisateur;
 
+import javax.persistence.EntityTransaction;
+
 public class UtilisateurDao extends AbstractJpaDao<Long, Utilisateur> {
 
 	public UtilisateurDao() {
@@ -15,6 +17,9 @@ public class UtilisateurDao extends AbstractJpaDao<Long, Utilisateur> {
 
 	public Utilisateur findById(String id) {
 		return entityManager.find(clazz, id);
+	}
+	public void deleteById(String id) {	Utilisateur entity = findById(id);
+		delete(entity);
 	}
 
 	public void save(Utilisateur u) {

@@ -1,7 +1,10 @@
 package kanban.rest;
 import io.swagger.v3.oas.annotations.Parameter;
 import kanban.dao.SectionDao;
+import kanban.dao.TableauDao;
 import kanban.domain.Section;
+import kanban.domain.Tableau;
+
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -29,7 +32,7 @@ public class SectionResource {
     @Path("/section/add")
     @Consumes("application/json")
     public Response addsection(
-            @Parameter(description = "Pet object that needs to be added to the store", required = true) Section sect) {
+            @Parameter(description = "", required = true) Section sect) {
         new SectionDao().save(sect);
         return Response.ok().entity("SUCCESS").build();
     }
@@ -40,5 +43,13 @@ public class SectionResource {
     public void  deleteSection(@PathParam("sectId") Long sectId) {
         new SectionDao().deleteById(sectId);
 
+    }
+    @POST
+    @Path("/section/update")
+    @Consumes("application/json")
+    public Response updateTableau(
+            @Parameter(description = "", required = true) Section section) {
+        new SectionDao().update(section);
+        return Response.ok().entity("SUCCESS").build();
     }
 }
