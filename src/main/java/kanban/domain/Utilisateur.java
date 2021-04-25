@@ -18,7 +18,7 @@ public class Utilisateur implements Serializable {
     private String nom;
     private String prenom;
     private String email;
-    @OneToMany(mappedBy = "utilisateur", cascade = { CascadeType.PERSIST})
+    @OneToMany(mappedBy = "utilisateur", cascade = { CascadeType.PERSIST, CascadeType.REMOVE})
     @JsonIgnoreProperties("utilisateur")
     private List<Fiche> fiches=new ArrayList<>();
 
