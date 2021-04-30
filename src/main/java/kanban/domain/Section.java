@@ -17,7 +17,7 @@ public class Section implements Serializable {
             inverseJoinColumns = @JoinColumn( name = "idTableau" ) )
     private List<Tableau> tableaux =new ArrayList<>();
 
-    @OneToMany(mappedBy = "section", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "section", cascade = CascadeType.ALL)
     private List<PositionnementFiche> positionnementFiches=new ArrayList<>();
 
     public Section() {

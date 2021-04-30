@@ -40,7 +40,7 @@ public class UtilisateurResource {
     @DELETE
     @Path("/utilisateur/delete/{userId}")
 
-    public void   deleteUtilisateur(@PathParam("userId")  String userId) {
+    public void deleteUtilisateur(@PathParam("userId")  String userId) {
         new UtilisateurDao().deleteById(userId);
         //return Response.ok().entity("SUCCESS").build();
     }

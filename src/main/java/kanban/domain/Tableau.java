@@ -17,7 +17,7 @@ public class Tableau implements Serializable {
             inverseJoinColumns = @JoinColumn( name = "idSection" ) )
     private List<Section> sections=new ArrayList<>();
 
-    @OneToMany(mappedBy = "tableau", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "tableau", cascade = CascadeType.ALL)
     private List<Fiche> fiches=new ArrayList<>();
 
 

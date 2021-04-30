@@ -42,7 +42,7 @@ public class FicheResource {
         new FicheDao().deleteById(idfich);
 
     }
-    @POST
+    @PUT
     @Path("/fiche/update")
     @Consumes("application/json")
     public Response updateFiche(

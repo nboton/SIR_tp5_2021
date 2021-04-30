@@ -33,11 +33,12 @@ public class Fiche implements Serializable {
     @JsonIgnoreProperties("fiches")
     private Utilisateur utilisateur;
 
-    @OneToMany(mappedBy = "fiche", cascade = CascadeType.MERGE)
+    @OneToMany(mappedBy = "fiche", cascade = CascadeType.ALL)
     private List<PositionnementFiche> positionnementFiches=new ArrayList<>();
 
-    @ManyToOne (cascade = CascadeType.PERSIST)
+    @ManyToOne (cascade = CascadeType.MERGE)
     @JoinColumn( name="idTableau" )
+    @JsonIgnoreProperties("fiches")
     private Tableau tableau;
 
     public Fiche() {
